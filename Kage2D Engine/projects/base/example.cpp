@@ -1,4 +1,5 @@
 #include "example.h"
+#include <kage2dutil/imstb_textedit.h>
 
 Example::Example(): App(), horizGrid(), vertGrid()
 {
@@ -95,6 +96,8 @@ bool Example::start()
 				tiles[i].setTexture(*yellowTile_02);
 			}
 
+			
+
 		}
 	}
 
@@ -148,9 +151,12 @@ void Example::update(float deltaT)
 	}
 
 
+
 	sf::Vector2i mousePos = sf::Mouse::getPosition(m_window);
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) 
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) 
+		&& mousePos.x >= gridPosition_X && mousePos.x <= gridPosition_X * cellHeight
+		&& mousePos.y >= gridPosition_Y && mousePos.y <= gridPosition_Y * cellLength)
 	{
 		int mouseCell_Pos_X = (mousePos.x - gridPosition_X) / cellHeight;
 		int mouseCell_Pos_Y = (mousePos.y - gridPosition_Y) / cellLength;
@@ -204,6 +210,7 @@ void Example::update(float deltaT)
 			tiles[i].setTexture(*yellowTile_02);
 			map[i] = 8;
 		}
+
 	}
 
 	ImGui::End();
