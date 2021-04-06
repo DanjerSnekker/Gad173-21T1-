@@ -1,5 +1,1 @@
-﻿  example.cpp
-  main.cpp
-C:\Users\farha\Desktop\My Stuff\SAE\SAE Projects\GAD173 Projects\Project 2 - Map Editor\Kage2D Engine\projects\base\example.cpp(57,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\farha\Desktop\My Stuff\SAE\SAE Projects\GAD173 Projects\Project 2 - Map Editor\Kage2D Engine\projects\base\example.cpp(107,28): warning C4100: 'deltaT': unreferenced formal parameter
-  base.vcxproj -> C:\Users\farha\Desktop\My Stuff\SAE\SAE Projects\GAD173 Projects\Project 2 - Map Editor\Kage2D Engine\bin\base_d.exe
+﻿  base.vcxproj -> C:\Users\farha\Desktop\My Stuff\SAE\SAE Projects\GAD173 Projects\Project 2 - Map Editor\Kage2D Engine\bin\base_d.exe

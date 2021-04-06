@@ -1,7 +1,7 @@
 #include "example.h"
 #include <kage2dutil/imstb_textedit.h>
 
-Example::Example(): App(), horizGrid(), vertGrid()
+Example::Example() : App(), horizGrid(), vertGrid(), tile()
 {
 }
 
@@ -20,36 +20,8 @@ bool Example::start()
 	m_backgroundSprite = kage::TextureManager::getSprite("data/sky.jpg");
 	sf::Vector2u resolution = m_backgroundSprite->getTexture()->getSize();
 	m_backgroundSprite->setScale(float(m_window.getSize().x) / resolution.x, float(m_window.getSize().y) / resolution.y);
-
-
-	blackTile_01 = kage::TextureManager::getTexture("data/Colour_Black_Tile_01_000000.png");   //TileID = 1
-
-	blueTile_01 = kage::TextureManager::getTexture("data/Colour_Blue_Tile_01_1a29fd.png");   //TileID = 2
-	blueTile_02 = kage::TextureManager::getTexture("data/Colour_Blue_Tile_02_525dfb.png");   //TileID = 3
-
+	
 	/*
-	greenTile_01 = kage::TextureManager::getTexture("data/Colour_Green_Tile_01_04ff00.png");   //TileID = 
-	greenTile_02 = kage::TextureManager::getTexture("data/Colour_Green_Tile_02_60ff5d.png");   //TileID = 
-
-	greyTile_01 = kage::TextureManager::getTexture("data/Colour_Grey_Tile_01_646565.png");   //TileID = 
-	*/
-
-	orangeTile_01 = kage::TextureManager::getTexture("data/Colour_Orange_Tile_01_ff9f2e.png");   //TileID = 4
-	orangeTile_02 = kage::TextureManager::getTexture("data/Colour_Orange_Tile_02_fb8d0b.png");   //TileID = 5
-
-	/*
-	pinkTile_01 = kage::TextureManager::getTexture("data/Colour_Pink_Tile_01_ff5df7.png");   //TileID = 
-	pinkTile_02 = kage::TextureManager::getTexture("data/Colour_Pink_Tile_02_ff00f2.png");   //TileID = 
-
-	redTile_01 = kage::TextureManager::getTexture("data/Colour_Red_Tile_01_f20909.png");   //TileID = 
-	redTile_02 = kage::TextureManager::getTexture("data/Colour_Red_Tile_02_fd3838.png");   //TileID = 
-	*/
-
-	whiteTile_01 = kage::TextureManager::getTexture("data/Colour_White_Tile_01_ffffff.png");   //TileID = 6
-
-	yellowTile_01 = kage::TextureManager::getTexture("data/Colour_Yellow_Tile_01_fffc2e.png");   //TileID = 7
-	yellowTile_02 = kage::TextureManager::getTexture("data/Colour_Yellow_Tile_02_fffb00.png");   //TileID = 8
-
 	for (size_t y = 0; y < 10; y++)
 	{
 		for (size_t x= 0; x < 15; x++)
@@ -58,48 +30,51 @@ bool Example::start()
 
 			if (map[i] == 1)
 			{
-				tiles[i].setTexture(*blackTile_01);
+				//tiles[i].setTexture(*blackTile_01);
 			}
 
 			if (map[i] == 2)
 			{
-				tiles[i].setTexture(*blueTile_01);
+				//tiles[i].setTexture(*blueTile_01);
 			}
 
 			if (map[i] == 3)
 			{
-				tiles[i].setTexture(*blueTile_02);
+				//tiles[i].setTexture(*blueTile_02);
 			}
 
 			if (map[i] == 4)
 			{
-				tiles[i].setTexture(*orangeTile_01);
+				//tiles[i].setTexture(*orangeTile_01);
 			}
 
 			if (map[i] == 5)
 			{
-				tiles[i].setTexture(*orangeTile_02);
+				//tiles[i].setTexture(*orangeTile_02);
 			}
 
 			if (map[i] == 6)
 			{
-				tiles[i].setTexture(*whiteTile_01);
+				//tiles[i].setTexture(*whiteTile_01);
 			}
 
 			if (map[i] == 7)
 			{
-				tiles[i].setTexture(*yellowTile_01);
+				//tiles[i].setTexture(*yellowTile_01);
 			}
 
 			if (map[i] == 8)
 			{
-				tiles[i].setTexture(*yellowTile_02);
+				//tiles[i].setTexture(*yellowTile_02);
 			}
 
-			
+			tiles[i].setPosition(sf::Vector2f(gridPosition_X + x * cellLength, gridPosition_Y + y * cellHeight));
 
 		}
-	}
+	}*/
+
+	tile.load();
+
 
 	return true;
 }
@@ -165,50 +140,50 @@ void Example::update(float deltaT)
 
 		if (tileIDSelected == 1)
 		{
-			tiles[i].setTexture(*blackTile_01);
-			map[i] = 1;
+			tile.tiles[i].setTexture(*blackTile_01);
+			
 		}
 
 		if (tileIDSelected == 2)
 		{
-			tiles[i].setTexture(*blueTile_01);
-			map[i] = 2;
+			tile.tiles[i].setTexture(*blueTile_01);
+			
 		}
 
 		if (tileIDSelected == 3)
 		{
-			tiles[i].setTexture(*blueTile_02);
-			map[i] = 3;
+			tile.tiles[i].setTexture(*blueTile_02);
+			
 		}
 
 		if (tileIDSelected == 4)
 		{
-			tiles[i].setTexture(*orangeTile_01);
-			map[i] = 4;
+			tile.tiles[i].setTexture(*orangeTile_01);
+			
 		}
 
 		if (tileIDSelected == 5)
 		{
-			tiles[i].setTexture(*orangeTile_02);
-			map[i] = 5;
+			tile.tiles[i].setTexture(*orangeTile_02);
+			
 		}
 
 		if (tileIDSelected == 6)
 		{
-			tiles[i].setTexture(*whiteTile_01);
-			map[i] = 6;
+			tile.tiles[i].setTexture(*whiteTile_01);
+			
 		}
 
 		if (tileIDSelected == 7)
 		{
-			tiles[i].setTexture(*yellowTile_01);
-			map[i] = 7;
+			tile.tiles[i].setTexture(*yellowTile_01);
+			
 		}
 
 		if (tileIDSelected == 8)
 		{
-			tiles[i].setTexture(*yellowTile_02);
-			map[i] = 8;
+			tile.tiles[i].setTexture(*yellowTile_02);
+			
 		}
 
 	}
@@ -220,9 +195,9 @@ void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
 
-	for (size_t i = 0; i < 16; i++)
+	for (size_t i = 0; i < 15; i++)
 	{
-		m_window.draw(tiles[i]);
+		m_window.draw(tile.tiles[i]);
 	}
 
 	horizGrid.Render(m_window);
