@@ -1,5 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <kage2dutil/texture_manager.h>
+#include "grid.h"
+
 
 
 class tile
@@ -10,9 +13,12 @@ class tile
 public:
 
 	tile();
-	void load();
 	~tile();
-	
+
+	void load();
+	void TextureLoad();
+	void LoadMap();
+
 	sf::Texture* blackTile_01;
 
 	sf::Texture* blueTile_01;
@@ -42,7 +48,7 @@ public:
 	sf::Texture* yellowTile_02;
 
 
-	sf::Sprite tiles[150];
+	sf::Sprite tileTexture[150];
 
 
 	/*

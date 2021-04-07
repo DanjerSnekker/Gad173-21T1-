@@ -74,7 +74,8 @@ bool Example::start()
 	}*/
 
 	tile.load();
-
+	tile.LoadMap();
+	
 
 	return true;
 }
@@ -92,40 +93,40 @@ void Example::update(float deltaT)
 		m_running = false;
 	}
 
-	if (ImGui::ImageButton(*blackTile_01, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(*tile.blackTile_01, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 1;
 	}
-	if (ImGui::ImageButton(*blueTile_01, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(*tile.blueTile_01, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 2;
 	}
-	if (ImGui::ImageButton(*blueTile_02, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(*tile.blueTile_02, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 3;
 	}
-	if (ImGui::ImageButton(*orangeTile_01, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(*tile.orangeTile_01, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 4;
 	}
-	if (ImGui::ImageButton(*orangeTile_02, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(*tile.orangeTile_02, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 5;
 	}
-	if (ImGui::ImageButton(*whiteTile_01, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(tile.whiteTile_01, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 6;
 	}
-	if (ImGui::ImageButton(*yellowTile_01, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(tile.yellowTile_01, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 7;
 	}
-	if (ImGui::ImageButton(*yellowTile_02, sf::Vector2f(cellHeight, cellLength)))
+	if (ImGui::ImageButton(tile.yellowTile_02, sf::Vector2f(cellHeight, cellLength)))
 	{
 		tileIDSelected = 8;
 	}
 
-
+	ImGui::End();
 
 	sf::Vector2i mousePos = sf::Mouse::getPosition(m_window);
 
@@ -136,68 +137,70 @@ void Example::update(float deltaT)
 		int mouseCell_Pos_X = (mousePos.x - gridPosition_X) / cellHeight;
 		int mouseCell_Pos_Y = (mousePos.y - gridPosition_Y) / cellLength;
 
-		int i = mouseCell_Pos_X + mouseCell_Pos_Y * 15;
+		int i = mouseCell_Pos_X + mouseCell_Pos_Y * 10;
+
+		std::cout << i << std::endl;
+
 
 		if (tileIDSelected == 1)
 		{
-			tile.tiles[i].setTexture(*blackTile_01);
-			
+			tile.tileTexture[i].setTexture(*tile.blackTile_01);
+			tile.map[i] = 1;
 		}
 
 		if (tileIDSelected == 2)
 		{
-			tile.tiles[i].setTexture(*blueTile_01);
-			
+			tile.tileTexture[i].setTexture(*tile.blueTile_01);
+			tile.map[i] = 2;
 		}
 
 		if (tileIDSelected == 3)
 		{
-			tile.tiles[i].setTexture(*blueTile_02);
-			
+			tile.tileTexture[i].setTexture(*tile.blueTile_02);
+			tile.map[i] = 3;
 		}
 
 		if (tileIDSelected == 4)
 		{
-			tile.tiles[i].setTexture(*orangeTile_01);
-			
+			tile.tileTexture[i].setTexture(*tile.orangeTile_01);
+			tile.map[i] = 4;
 		}
 
 		if (tileIDSelected == 5)
 		{
-			tile.tiles[i].setTexture(*orangeTile_02);
-			
+			tile.tileTexture[i].setTexture(*tile.orangeTile_02);
+			tile.map[i] = 5;
 		}
 
 		if (tileIDSelected == 6)
 		{
-			tile.tiles[i].setTexture(*whiteTile_01);
-			
+			tile.tileTexture[i].setTexture(*tile.whiteTile_01);
+			tile.map[i] = 6;
 		}
 
 		if (tileIDSelected == 7)
 		{
-			tile.tiles[i].setTexture(*yellowTile_01);
-			
+			tile.tileTexture[i].setTexture(*tile.yellowTile_01);
+			tile.map[i] = 7;
 		}
 
 		if (tileIDSelected == 8)
 		{
-			tile.tiles[i].setTexture(*yellowTile_02);
-			
+			tile.tileTexture[i].setTexture(*tile.yellowTile_02);
+			tile.map[i] = 8;
 		}
 
 	}
 
-	ImGui::End();
 }
 
 void Example::render()
 {
 	m_window.draw(*m_backgroundSprite);
 
-	for (size_t i = 0; i < 15; i++)
+	for (size_t i = 0; i < 150; i++)
 	{
-		m_window.draw(tile.tiles[i]);
+		m_window.draw(tile.tileTexture[i]);
 	}
 
 	horizGrid.Render(m_window);
