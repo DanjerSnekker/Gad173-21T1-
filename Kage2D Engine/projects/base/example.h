@@ -6,6 +6,11 @@
 
 class Example : public App
 {
+
+/*--------------------------------------------------
+				Class Functions
+--------------------------------------------------*/
+
 public:
 	Example();
 	virtual ~Example();
@@ -15,13 +20,23 @@ public:
 	virtual void cleanup();
 	static Example &inst();
 
+
+/*--------------------------------------------------
+				Background Sprite
+--------------------------------------------------*/
+	
 	sf::Sprite *m_backgroundSprite;
 
-
+/*--------------------------------------------------
+				Tile ID Variable
+--------------------------------------------------*/
 
 	int tileIDSelected = 0;
 
-	
+/*--------------------------------------------------
+			Class Reference Variables
+--------------------------------------------------*/
+
 	tile tile;
 
 	grid horizGrid;

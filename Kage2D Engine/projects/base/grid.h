@@ -1,22 +1,37 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#define horizLine 16
-#define vertLine 11
+/*--------------------------------------------------
+			Grid Variable Definitions
+--------------------------------------------------*/
 
-#define horizLine_LENGTH 604
-#define vertLine_LENGTH 600
+#define gridOFFSET_X 100		//100x is the suggested position
+#define gridOFFSET_Y 50			//50y is the suggested position
 
-#define lineWidth 4
+#define total_X_CELLCOUNT 5
+#define total_Y_CELLCOUNT 10
 
-#define gridPosition_X 100 //100x is the suggested position
-#define gridPosition_Y 50  //50y is the suggested position
+#define cell_X_OFFSET 60
+#define cell_Y_OFFSET 40
 
-#define cellHeight 60
-#define cellLength 40
+#define lineWIDTH 4
+#define cell_ToLine_OFFSET 1
+
+#define total_CELLCOUNT total_X_CELLCOUNT * total_Y_CELLCOUNT
+
+#define horizLine_LENGTH total_X_CELLCOUNT * cell_X_OFFSET + lineWIDTH
+#define vertLine_LENGTH total_Y_CELLCOUNT * cell_Y_OFFSET
+
+#define horizLine total_Y_CELLCOUNT + cell_ToLine_OFFSET
+#define vertLine total_X_CELLCOUNT + cell_ToLine_OFFSET
 
 class grid
 {
+
+/*--------------------------------------------------
+				Class Functions
+--------------------------------------------------*/
+
 	void Update();
 	void Draw();
 
@@ -25,6 +40,10 @@ public:
 	~grid();
 
 	void Render(sf::RenderWindow& window);
+
+/*--------------------------------------------------
+			Initiliazing the Shapes
+--------------------------------------------------*/
 
 	sf::RectangleShape lineX[horizLine];
 	sf::RectangleShape lineY[vertLine];

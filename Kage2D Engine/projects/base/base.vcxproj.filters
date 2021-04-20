@@ -33,6 +33,9 @@
     <ClCompile Include="tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Save_And_Load.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Save_And_Load.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

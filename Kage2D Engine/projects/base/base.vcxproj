@@ -100,6 +100,7 @@
     <ClInclude Include="app.h" />
     <ClInclude Include="example.h" />
     <ClInclude Include="grid.h" />
+    <ClInclude Include="Save_And_Load.h" />
     <ClInclude Include="tile.h" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +109,7 @@
     <ClCompile Include="example.cpp" />
     <ClCompile Include="grid.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Save_And_Load.cpp" />
     <ClCompile Include="tile.cpp" />
   </ItemGroup>
   <ItemGroup>
